@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build"
+ 
+    "start": "react-scripts start"
   },
   "keywords": [],
   "author": "",
@@ -23,19 +23,6 @@
     "joi": "^17.9.2",
     "mysql2": "^3.3.2",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.4",
-    "react-scripts": "5.0.1"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "typescript": "^5.0.4"
   }
 }
