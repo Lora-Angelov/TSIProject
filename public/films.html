@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="films.css">
+  <title>Browse Film Collection</title>
+</head>
+<body>
+  <header>
+    <h1>Browse Film Collection</h1>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Search films...">
+      <select id="filter-select">
+        <option value="title">Title</option>
+        <option value="id">ID</option>
+        <option value="release-year">Release Year</option>
+        <option value="length">Length</option>
+      </select>
+      <button id="search-button">Search</button>
+    </div>
+  </header>
+  <main>
+    <div class="film-list">
+      <!-- Film boxes will be dynamically generated here -->
+    </div>
+    <div class="pagination">
+      <!-- Pagination links will be generated here -->
+    </div>
+  </main>
+  <script src="filmsfront.js"></script>
+  <script>
+    // Create a new film
+    function createFilm(filmData) {
+      fetch('/api/films', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(filmData),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Error creating film');
+          }
+          // Handle successful response, e.g., show success message, update film list, etc.
+        })
+        .catch((error) => {
+          console.error(error);
+          // Handle error, e.g., show error message to user
+        });
+    }
+
+    // Update a film by ID
+    function updateFilm(filmId, filmData) {
+      fetch(`/api/films/${filmId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(filmData),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Error updating film');
+          }
+          // Handle successful response, e.g., show success message, update film details, etc.
+        })
+        .catch((error) => {
+          console.error(error);
+          // Handle error, e.g., show error message to user
+        });
+    }
+
+    // Delete a film by ID
+    function deleteFilm(filmId) {
+      fetch(`/api/films/${filmId}`, {
+        method: 'DELETE',
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Error deleting film');
+          }
+          // Handle successful response, e.g., show success message, remove film from the list, etc.
+        })
+        .catch((error) => {
+          console.error(error);
+          // Handle error, e.g., show error message to user
+        });
+    }
+
+    // Add event listeners and handle CRUD operations
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Fetch and display films
+      fetch('/api/films')
+        .then((response) => response.json())
+        .then((data) => {
+          // Display films in the film list
+          const filmListContainer = document.querySelector('.film-list');
+          data.forEach((film) => {
+            const filmBox = createFilmBox(film);
+            filmListContainer.appendChild(filmBox);
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+          // Handle error, e.g., show error message to user
+        });
+
+      // Add event listener for creating a new film
+      const createFilmButton = document.getElementById('create-film-button');
+      createFilmButton.addEventListener('click', () => {
+        const filmData = {
+          title: 'New Film Title',
+          description: 'New Film Description',
+          release_year: 2023,
+          language_id: 1,
+          // Add additional film data as needed
+        };
+        createFilm(filmData);
+      });
+
+// Add event listener for updating a film
+const updateFilmButton = document.getElementById('update-film-button');
+updateFilmButton.addEventListener('click', () => {
+  const filmId = film_id // Get the film ID from the form or other source
+  const filmData = {
+    title: 'Updated Film Title',
+    description: 'Updated Film Description',
+    release_year: 2023,
+    language_id: 1,
+    // Add additional film data as needed
+  };
+  updateFilm(filmId, filmData);
+});
+
+
+      // Add event listener for delete film button click
+      const deleteFilmButton = document.getElementById('delete-film-button');
+      deleteFilmButton.addEventListener('click', () => {
+        const filmId = // Get the film ID from the form or other source
+        deleteFilm(filmId);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(33.33vh); /* Occupies one third of the viewport height */
+    background-color: #f2f2f2; /* Change the background color as desired */
+  }
+  
+  .title {
+    font-size: 48px; /* Increase the font size for the title */
+    font-weight: bold;
+  }
+  
+  .description {
+    font-size: 16px; /* Decrease the font size for the description */
+    text-align: center; /* Center-align the description text */
+    margin: 16px; /* Add some margin around the description */
+  }
+  
+  
+  h1 {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  p {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  .browse-buttons {
+    display: flex;
+    justify-content: space-around;
+    height: calc(33.33vh);
+  }
+  
+  .browse-button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+  }
+  
+  .browse-button img {
+    width: 350px;
+    height: auto;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .browse-button .browse-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 8px;
+    color: black;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .browse-button:hover img {
+    opacity: 0.5;
+  }
+  
+  .browse-button:hover .browse-text {
+    opacity: 1;
+  }
+  
+  
+  .lucky-dip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(33.33vh); /* Occupies one third of the viewport height */
+    background-color: #f2f2f2; /* Change the background color as desired */
+  }
+  
+  .lucky-dip h2 {
+    font-size: 24px; /* Adjust the font size as desired */
+    font-weight: bold;
+  }
+  
+  .lucky-dip button {
+    font-size: 18px; /* Adjust the font size as desired */
+    margin-top: 16px; /* Add spacing between the title and the button */
+  }
+  
+  #film-details {
+    margin-top: 16px; /* Add spacing between the button and the film details */
+    width: 800px; /* Set a fixed width */
+    height: 200px; /* Set a fixed height */
+  }
+  
+  
