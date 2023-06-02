@@ -15,20 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const db_1 = require("./db");
 const db_2 = __importDefault(require("./db"));
-const db_3 = require("./db");
 const router = express_1.default.Router();
 /////FILMS////
 const app = (0, express_1.default)();
-app.get('/films', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const films = yield (0, db_3.getFilmsFromDatabase)();
-        res.json(films);
-    }
-    catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Error fetching films' });
-    }
-}));
 // Get a random film
 router.get('/films/random', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {

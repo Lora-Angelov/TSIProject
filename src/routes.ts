@@ -3,6 +3,7 @@ import { Router, Request, Response } from 'express';
 import { RowDataPacket } from 'mysql2/promise';
 import { executeQuery } from './db';
 import db from './db';
+import path from 'path';
  ////DATA VALIDATION///
 import joi from 'joi';
 
@@ -14,20 +15,9 @@ const router = express.Router();
 
 const app = express();
 
-app.get('/films', async (req: Request, res: Response) => {
-    try {
-      const films = await getFilmsFromDatabase();
-      res.json(films);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Error fetching films' });
-    }
-  });
-
-
 
 // Get a random film
-router.get('/films/random', async (req: Request, res: Response) => {
+router.get('/films/random', async (req: Request, res: any) => {
   try {
     const [rows] = await db.query<RowDataPacket[]>('SELECT * FROM film ORDER BY RAND() LIMIT 1');
     if (rows.length === 0) {
@@ -43,7 +33,7 @@ router.get('/films/random', async (req: Request, res: Response) => {
 });
 
 // Get all films
-router.get('/films', async (req, res) => {
+router.get('/films', async (req: Request, res: any) => {
   try {
     const films = await executeQuery('SELECT * FROM film');
     res.json(films);
@@ -54,7 +44,7 @@ router.get('/films', async (req, res) => {
 });
 
 // Get a specific film by ID
-router.get('/films/:id', async (req, res) => {
+router.get('/films/:id', async (req: any, res: any) => {
   const { id } = req.params;
   try {
     const films = await executeQuery('SELECT * FROM film WHERE film_id = ?', [id]);
