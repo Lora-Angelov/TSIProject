@@ -21,12 +21,12 @@ app.use('/api', routes);
 app.use('/api', actors);
 
 // Serve index.html for the root URL
-app.get('/', (req:Request, res:Response) => {
-    (res as any).sendFile(path.join(__dirname, 'public', 'index.html'));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });
 
 // API route for fetching films data
-app.get('/api/films', async (req: any, res: any) => {
+app.get('/api/films', async (req: Request, res: Response) => {
     try {
       // Fetch films data from the database
       const films = await getFilmsFromDatabase();
@@ -51,7 +51,7 @@ const db = mysql.createPool({
   database: 'sakila'
 });
 
-app.get('/test-db', async (req:Request, res:any) => {
+app.get('/test-db', async (req, res) => {
   try {
     const [rows, fields] = await db.query('SELECT * FROM actor');
     res.json(rows);

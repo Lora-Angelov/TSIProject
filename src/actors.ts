@@ -1,5 +1,4 @@
-import express from 'express';
-import { Request, Response } from 'express';
+import express, { Request, Response } from 'express';
 import db from './db';
 import joi from 'joi';
 
@@ -12,7 +11,7 @@ const actorSchema = joi.object({
   });
 
 // Get all actors
-router.get('/actors', async (req: Request, res: any) => {
+router.get('/actors', async (req: Request, res: Response) => {
   try {
     const [actors] = await db.query('SELECT * FROM actor');
     res.json(actors);
@@ -23,7 +22,7 @@ router.get('/actors', async (req: Request, res: any) => {
 });
 
 // Get a single actor by ID
-router.get('/actors/:id', async (req: any, res: any) => {
+router.get('/actors/:id', async (req: Request, res: Response) => {
     const { id } = req.params;
     try {
       const [actor] = await db.query('SELECT * FROM actor WHERE actor_id = ?', [id]);
@@ -40,8 +39,6 @@ router.get('/actors/:id', async (req: any, res: any) => {
     }
   });
 
-
-  /*
 // Create a new actor
 router.post('/actors', async (req: Request, res: Response) => {
     const { error, value } = actorSchema.validate(req.body);
@@ -114,6 +111,6 @@ router.delete('/actors/:id', async (req: Request, res: Response) => {
       console.error(err);
       res.status(500).send('Database error');
     }
-  });*/
+  });
 
 export default router;
