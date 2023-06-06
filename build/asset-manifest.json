@@ -1,7 +1,7 @@
 {
   "files": {
     "main.js": "/static/js/main.edbfd237.js",
-    "index.html": "/index.html",
+    "index.html": "https://tsiproject.azurewebsites.net/index.html",
     "main.edbfd237.js.map": "/static/js/main.edbfd237.js.map"
   },
   "entrypoints": [
