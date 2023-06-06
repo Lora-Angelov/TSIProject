@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Event listener for the lucky dip button
   luckyDipButton.addEventListener('click', () => {
-    fetch('/api/films/random')
+    fetch('https://tsiproject.azurewebsites.net/api/films/random')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Error fetching random film');
