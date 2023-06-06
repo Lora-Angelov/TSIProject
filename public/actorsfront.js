@@ -1,7 +1,7 @@
 // Fetch Actors Data
 async function fetchActorsData() {
     try {
-      const response = await fetch('https://tsiproject.azurewebsites.net/api/actors');
+      const response = await fetch('/api/actors');
       if (!response.ok) {
         throw new Error('Error fetching actors data');
       }

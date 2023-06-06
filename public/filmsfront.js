@@ -1,7 +1,7 @@
 // Fetch Films Data
 async function fetchFilmsData() {
     try {
-      const response = await fetch('https://tsiproject.azurewebsites.net/api/films');
+      const response = await fetch('/api/films');
       if (!response.ok) {
         throw new Error('Error fetching films data');
       }
