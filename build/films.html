@@ -31,8 +31,8 @@
   <script src="filmsfront.js"></script>
   <script>
     // Create a new film
-    function createFilm(filmData) {
-      fetch('/api/films', {
+ /*   function createFilm(filmData) {
+      fetch('https://tsiproject.azurewebsites.net/api/films', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -53,7 +53,7 @@
 
     // Update a film by ID
     function updateFilm(filmId, filmData) {
-      fetch(`/api/films/${filmId}`, {
+      fetch(`https://tsiproject.azurewebsites.net/api/films/${filmId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -74,7 +74,7 @@
 
     // Delete a film by ID
     function deleteFilm(filmId) {
-      fetch(`/api/films/${filmId}`, {
+      fetch(`https://tsiproject.azurewebsites.net/api/films/${filmId}`, {
         method: 'DELETE',
       })
         .then((response) => {
@@ -93,7 +93,7 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       // Fetch and display films
-      fetch('/api/films')
+      fetch('https://tsiproject.azurewebsites.net/api/films')
         .then((response) => response.json())
         .then((data) => {
           // Display films in the film list
@@ -142,7 +142,7 @@ updateFilmButton.addEventListener('click', () => {
         const filmId = // Get the film ID from the form or other source
         deleteFilm(filmId);
       });
-    });
+    }); */
   </script>
 </body>
 </html>
