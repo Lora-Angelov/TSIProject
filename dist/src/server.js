@@ -14,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const body_parser_1 = __importDefault(require("body-parser"));
-const cors_1 = __importDefault(require("cors"));
 const routes_1 = __importDefault(require("./routes"));
 const actors_1 = __importDefault(require("./actors"));
 const path_1 = __importDefault(require("path"));
@@ -22,7 +21,9 @@ const express_1 = __importDefault(require("express"));
 //import { getFilmsFromDatabase } from './db';
 const app = (0, express_1.default)();
 app.use(body_parser_1.default.json());
-app.use((0, cors_1.default)());
+app.use(express_1.default.json());
+//@ts-ignore
+app.use((0, cors_1.default)({ 'Access-Control-Allow-Origin': '*' }));
 // Serve static files
 app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));
 app.use(express_1.default.static('public'));

@@ -10,7 +10,10 @@ import express, { Request, Response } from 'express';
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+app.use(express.json());
+//@ts-ignore
+app.use((0, cors_1.default)({ 'Access-Control-Allow-Origin': '*' }));
+
 
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
